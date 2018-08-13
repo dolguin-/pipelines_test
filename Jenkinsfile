@@ -1,6 +1,14 @@
 pipeline {
     agent { label 'master'}
     stages {
+      stage('check tools') {
+        steps{
+            sh "bitrise -v"
+            sh "node -v"
+            sh "npm -v"
+            sh "pip -V"
+        }
+      }
       stage('test_01') {
         steps {
             script {
